@@ -4,21 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Droguería San Antonio | Resistencia, Chaco</title>
-  <meta name="description" content="Droguería San Antonio: medicamentos e insumos hospitalarios. Resistencia, Chaco." />
+  <meta name="description" content="Droguería San Antonio: medicamentos, insumos hospitalarios, oncológicos, HIV, esclerosis múltiple y fórmulas nutricionales. Resistencia, Chaco." />
 
   <style>
     :root{
-      --bg: #f7fbff;
-      --card: #ffffff;
-      --ink: #0b1726;
-      --muted:#47627c;
+      --bg1:#f7fbff;
+      --bg2:#eef6ff;
+      --card:#ffffff;
+
+      --ink:#0b1726;
+      --muted:#4a6682;
 
       --primary:#0b3f78;
       --primary2:#1e6fd6;
+      --accent:#2fb3ff;
+      --accent2:#7ad7ff;
+
       --line: rgba(11,63,120,.14);
+      --shadow: 0 16px 40px rgba(11,23,38,.10);
 
       --radius: 18px;
-      --shadow: 0 16px 40px rgba(11,23,38,.10);
     }
 
     *{ box-sizing:border-box; }
@@ -28,18 +33,18 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(900px 520px at 10% 0%, rgba(30,111,214,.16), transparent 62%),
-        radial-gradient(750px 500px at 95% 20%, rgba(11,63,120,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg), #eef6ff 70%, #ffffff);
+        radial-gradient(900px 520px at 12% 0%, rgba(47,179,255,.20), transparent 62%),
+        radial-gradient(750px 500px at 92% 14%, rgba(30,111,214,.14), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 70%, #ffffff);
       line-height:1.55;
     }
     a{ color:inherit; text-decoration:none; }
+
     .container{ max-width:1120px; margin:0 auto; padding:0 20px; }
 
-    /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.84);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
@@ -50,29 +55,30 @@
 
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 220px;
+      min-width: 260px;
     }
 
-    /* Logo image (with safe fallback) */
+    /* Logo MÁS longitudinal (se ve más ancho y prolijo) */
     .logoWrap{
-      width: 170px;
-      height: 44px;
+      width: 320px;
+      height: 64px;
       display:flex;
       align-items:center;
     }
     .logo{
-      height: 44px;
-      width: auto;
-      max-width: 170px;
+      height: 64px;
+      width: 100%;
+      max-width: 320px;
       object-fit: contain;
       display:block;
+      filter: drop-shadow(0 10px 18px rgba(11,63,120,.10));
     }
     .logoFallback{
       display:none;
       padding:10px 12px;
       border-radius: 14px;
-      background: rgba(30,111,214,.10);
-      border: 1px solid rgba(30,111,214,.18);
+      background: rgba(47,179,255,.12);
+      border: 1px solid rgba(47,179,255,.22);
       color: var(--primary);
       font-weight: 900;
       letter-spacing:.06em;
@@ -86,8 +92,16 @@
       font-weight: 900; font-size: 13px;
       color: var(--muted);
     }
-    nav a{ padding:8px 10px; border-radius: 12px; }
-    nav a:hover{ background: rgba(30,111,214,.08); color: var(--primary); }
+    nav a{
+      padding:8px 10px;
+      border-radius: 12px;
+      transition:.18s ease;
+    }
+    nav a:hover{
+      background: rgba(47,179,255,.12);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -98,7 +112,7 @@
       background:#fff;
       color: var(--primary);
       cursor:pointer;
-      transition:.2s ease;
+      transition:.18s ease;
       font-weight: 900;
       box-shadow: 0 10px 26px rgba(11,23,38,.06);
       white-space:nowrap;
@@ -108,14 +122,18 @@
       background: linear-gradient(135deg, var(--primary), var(--primary2));
       border-color: transparent;
       color:#fff;
-      box-shadow: 0 16px 34px rgba(30,111,214,.22);
+      box-shadow: 0 18px 38px rgba(30,111,214,.22);
+    }
+    .btn.soft{
+      background: rgba(47,179,255,.12);
+      border: 1px solid rgba(47,179,255,.28);
+      color: var(--primary);
     }
 
-    /* Hero */
     .hero{ padding: 38px 0 10px; }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.15fr .85fr;
       gap: 16px;
       align-items: stretch;
     }
@@ -124,8 +142,8 @@
       display:inline-flex; align-items:center; gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(30,111,214,.10);
-      border: 1px solid rgba(30,111,214,.18);
+      background: rgba(47,179,255,.12);
+      border: 1px solid rgba(47,179,255,.22);
       color: var(--primary);
       font-weight: 900;
       font-size: 12px;
@@ -134,7 +152,7 @@
 
     h1{
       margin: 14px 0 10px;
-      font-size: clamp(36px, 4.5vw, 58px);
+      font-size: clamp(36px, 4.6vw, 60px);
       line-height: 1.02;
       letter-spacing: -.03em;
     }
@@ -142,8 +160,9 @@
       margin:0;
       color: var(--muted);
       font-size: 16.5px;
-      max-width: 62ch;
+      max-width: 64ch;
     }
+
     .heroActions{
       display:flex; gap:12px; flex-wrap:wrap;
       margin-top: 18px;
@@ -156,24 +175,23 @@
       box-shadow: var(--shadow);
     }
 
-    /* Right hero card */
     .heroCard{
       position:relative;
       overflow:hidden;
       padding: 18px;
       background:
-        radial-gradient(520px 320px at 30% 20%, rgba(30,111,214,.12), transparent 60%),
-        linear-gradient(180deg, #ffffff, #f4f9ff);
+        radial-gradient(520px 320px at 25% 20%, rgba(47,179,255,.18), transparent 60%),
+        linear-gradient(180deg, #ffffff, #f3f9ff);
     }
     .heroCard:before{
       content:"";
       position:absolute;
       inset:-60px;
       background:
-        radial-gradient(circle at 25% 20%, rgba(30,111,214,.18), transparent 60%),
+        radial-gradient(circle at 25% 20%, rgba(47,179,255,.22), transparent 60%),
         radial-gradient(circle at 75% 60%, rgba(11,63,120,.12), transparent 55%);
       filter: blur(18px);
-      opacity:.8;
+      opacity:.85;
       pointer-events:none;
     }
     .heroCard .inner{ position:relative; display:flex; flex-direction:column; gap: 12px; }
@@ -187,77 +205,90 @@
       padding: 12px;
       border-radius: 16px;
       border: 1px solid rgba(11,63,120,.12);
-      background: rgba(255,255,255,.80);
+      background: rgba(255,255,255,.84);
+      transition:.18s ease;
+    }
+    .mini:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(11,23,38,.08);
+      border-color: rgba(47,179,255,.35);
     }
     .mini strong{ display:block; font-size: 13px; }
     .mini span{ display:block; margin-top:6px; color: var(--muted); font-size: 12px; }
 
-    .promoRow{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
+    .quickLinks{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .quick{
       padding: 12px;
       border-radius: 16px;
-      border: 1px dashed rgba(11,63,120,.22);
-      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(47,179,255,.22);
+      background: rgba(255,255,255,.86);
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      transition:.18s ease;
     }
-    .promoRow b{ display:block; color: var(--primary); font-size: 13px; }
-    .promoRow span{ display:block; color: var(--muted); font-size: 12px; margin-top:4px; }
+    .quick:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(11,23,38,.08);
+    }
+    .quick b{ color: var(--primary); font-size: 13px; }
+    .quick span{ color: var(--muted); font-size: 12px; display:block; margin-top:3px; }
+    .pill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(47,179,255,.18), rgba(30,111,214,.10));
+      border: 1px solid rgba(47,179,255,.26);
+      font-weight: 900;
+      font-size: 12px;
+      color: var(--primary);
+      white-space: nowrap;
+    }
 
-    .iconBox{
-      width: 70px; height: 70px;
-      border-radius: 20px;
-      border: 1px solid rgba(30,111,214,.18);
-      background: linear-gradient(135deg, rgba(30,111,214,.12), rgba(11,63,120,.06));
-      display:grid; place-items:center;
-      position:relative; overflow:hidden;
-      flex: 0 0 auto;
-    }
-    .iconBox img{
-      width: 58px; height:auto;
-      animation: floaty 3.6s ease-in-out infinite;
-    }
-    @keyframes floaty{
-      0%,100%{ transform: translateY(0) rotate(0deg); }
-      50%{ transform: translateY(-6px) rotate(-1.4deg); }
-    }
-
-    /* Sections */
     section{ padding: 42px 0; }
+
     .sectionTitle{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 14px; margin-bottom: 14px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 14px;
     }
-    .sectionTitle h2{ margin:0; font-size: 24px; letter-spacing:-.01em; }
-    .sectionTitle p{ margin:0; color: var(--muted); font-size: 14px; max-width: 74ch; }
+    .sectionTitle h2{
+      margin:0;
+      font-size: 26px;
+      letter-spacing:-.01em;
+      position:relative;
+      padding-left: 12px;
+    }
+    .sectionTitle h2:before{
+      content:"";
+      position:absolute;
+      left:0; top: 6px;
+      width: 6px; height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--primary2));
+      box-shadow: 0 0 0 6px rgba(47,179,255,.14);
+    }
+    .sectionTitle p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 74ch;
+      text-align:right;
+    }
 
     .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
     .boxpad{ padding: 18px; }
 
-    /* Values */
-    .values{
-      list-style:none; padding:0; margin:0;
-      display:grid; gap: 10px;
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
     }
-    .values li{
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(11,63,120,.12);
-      background:#fff;
-      display:flex; gap:12px; align-items:flex-start;
-    }
-    .dot{
-      width: 14px; height: 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--primary2), var(--primary));
-      box-shadow: 0 0 0 6px rgba(30,111,214,.12);
-      margin-top: 4px;
-      flex: 0 0 auto;
-    }
-    .values b{ color: var(--ink); }
-    .values .sub{ color: var(--muted); font-size: 13px; margin-top:4px; }
+    .bullets li{ margin: 6px 0; }
+    .bullets b{ color: var(--ink); }
 
-    /* Services */
     .servicesBanner{
       border-radius: var(--radius);
       border: 1px solid var(--line);
@@ -279,11 +310,16 @@
       border: 1px solid rgba(11,63,120,.12);
       background:#fff;
       box-shadow: 0 10px 26px rgba(11,23,38,.05);
+      transition:.18s ease;
     }
-    .service h3{ margin:0 0 6px; font-size: 15px; }
+    .service:hover{
+      transform: translateY(-2px);
+      border-color: rgba(47,179,255,.35);
+      box-shadow: 0 16px 36px rgba(11,23,38,.08);
+    }
+    .service h3{ margin:0 0 6px; font-size: 15px; color: var(--primary); }
     .service p{ margin:0; color: var(--muted); font-size: 13px; }
 
-    /* Contact */
     .contactGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -293,11 +329,23 @@
     .infoLine{
       display:flex; gap: 10px; align-items:flex-start;
       padding: 12px 0;
-      border-bottom: 1px dashed rgba(11,63,120,.18);
+      border-bottom: 1px dashed rgba(47,179,255,.30);
     }
     .infoLine:last-child{ border-bottom:none; }
     .infoLine b{ display:block; }
     .infoLine span{ color: var(--muted); display:block; margin-top:3px; font-size: 13px; }
+
+    .contactCardTop{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding: 12px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(47,179,255,.14), rgba(30,111,214,.08));
+      border: 1px solid rgba(47,179,255,.26);
+    }
+    .contactCardTop strong{ color: var(--primary); }
+    .contactCTAs{ display:flex; gap:10px; flex-wrap:wrap; }
 
     form{ display:grid; gap: 10px; }
     .row2{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -310,16 +358,16 @@
       background:#fff;
       color: var(--ink);
       outline:none;
+      transition:.18s ease;
     }
     input:focus, select:focus, textarea:focus{
-      border-color: rgba(30,111,214,.55);
-      box-shadow: 0 0 0 6px rgba(30,111,214,.12);
+      border-color: rgba(47,179,255,.65);
+      box-shadow: 0 0 0 6px rgba(47,179,255,.14);
     }
     textarea{ min-height: 130px; resize: vertical; }
 
     .formNote{ color: var(--muted); font-size: 12px; margin-top: 6px; }
 
-    /* Floating WhatsApp */
     .wa{
       position: fixed;
       left: 16px;
@@ -335,8 +383,9 @@
       box-shadow: 0 16px 40px rgba(0,0,0,.10);
       font-weight: 900;
       color: var(--primary);
+      transition:.18s ease;
     }
-    .wa:hover{ transform: translateY(-1px); }
+    .wa:hover{ transform: translateY(-2px); }
     .waDot{
       width: 10px; height: 10px;
       border-radius: 999px;
@@ -364,7 +413,12 @@
       .contactGrid{ grid-template-columns: 1fr; }
       .row2{ grid-template-columns: 1fr; }
       .miniGrid{ grid-template-columns: 1fr; }
-      .logoWrap{ width: 150px; }
+      .sectionTitle{ align-items:flex-start; }
+      .sectionTitle p{ text-align:left; }
+
+      /* En móvil, logo un poco más chico */
+      .logoWrap{ width: 240px; height: 56px; }
+      .logo{ height: 56px; max-width: 240px; }
     }
   </style>
 </head>
@@ -375,17 +429,15 @@
     <div class="nav">
       <a class="brand" href="#inicio" aria-label="Droguería San Antonio">
         <div class="logoWrap">
-          <img id="logoImg" class="logo" src="assets/logo.png" alt="" />
+          <img id="logoImg" class="logo" src="assets/logo.jpg" alt="Droguería San Antonio" />
           <div id="logoFallback" class="logoFallback">DROGUERÍA SAN ANTONIO</div>
         </div>
       </a>
 
       <nav aria-label="Navegación">
-        < видно -->
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#mision">Misión</a></li>
-          <li><a href="#principios">Principios</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -402,13 +454,15 @@
 
       <div>
         <div class="badge">Resistencia, Chaco • Dr. Regiardo 148</div>
-        <h1>Salud, logística y confianza<br/>en cada entrega.</h1>
+        <h1>Salud y confianza<br/>en cada entrega.</h1>
         <p class="lead">
-          <b>Droguería San Antonio</b> comercializa medicamentos y productos hospitalarios con estándares de calidad que priorizan
-          la conservación, la seguridad y el cumplimiento en los tiempos de entrega.
+          <b>Droguería San Antonio</b> comercializa medicamentos e insumos para el ámbito de la salud,
+          con criterios de calidad orientados a la seguridad, la conservación y el cumplimiento.
         </p>
+
         <div class="heroActions">
           <a class="btn primary" href="#servicios">Ver servicios</a>
+          <a class="btn soft" id="callTop" href="#">Llamar ahora</a>
           <a class="btn" href="#contacto">Pedir presupuesto</a>
         </div>
       </div>
@@ -419,6 +473,32 @@
             <div class="mini"><strong>Calidad</strong><span>Procesos y control</span></div>
             <div class="mini"><strong>Conservación</strong><span>Cuidado del producto</span></div>
             <div class="mini"><strong>Entrega</strong><span>En tiempo y forma</span></div>
+          </div>
+
+          <div class="quickLinks">
+            <a class="quick" href="#contacto">
+              <div>
+                <b>Contacto rápido</b>
+                <span>Formulario + email + WhatsApp.</span>
+              </div>
+              <span class="pill">Ir</span>
+            </a>
+
+            <a class="quick" href="#servicios">
+              <div>
+                <b>Ventas a instituciones</b>
+                <span>Sector público, privado, licitaciones y hospitales.</span>
+              </div>
+              <span class="pill">Ver</span>
+            </a>
+
+            <div class="quick" role="note">
+              <div>
+                <b>Ubicación</b>
+                <span>Dr. Regiardo 148, Resistencia, Chaco.</span>
+              </div>
+              <span class="pill">Mapa</span>
+            </div>
           </div>
         </div>
       </div>
@@ -434,8 +514,7 @@
         <div class="card boxpad">
           <p style="margin:0; color:var(--muted)">
             <b>Droguería San Antonio</b> es una empresa dedicada a la comercialización de productos y servicios para la salud.
-            Nos especializamos en <b>medicamentos</b> e <b>insumos hospitalarios</b>, trabajando con criterios de calidad para asegurar
-            la correcta conservación y una entrega confiable a nuestros clientes.
+            Nos especializamos en <b>medicamentos</b> e <b>insumos hospitalarios</b>, priorizando la conservación y una entrega confiable.
           </p>
         </div>
         <div class="card boxpad">
@@ -455,33 +534,15 @@
       <div class="card boxpad">
         <p style="margin:0; color:var(--muted)">
           Brindar asistencia y servicios confiables en el ámbito de la salud, contribuyendo a mejorar la calidad de vida de las personas
-          a través de una provisión responsable, segura y de alta calidad de medicamentos e insumos.
+          a través de una provisión responsable, segura y de alta calidad.
         </p>
-      </div>
-    </section>
 
-    <section id="principios">
-      <div class="sectionTitle">
-        <h2>Nuestros principios</h2>
-        <p>Valores que sostienen nuestra forma de trabajar.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card boxpad">
-          <ul class="values">
-            <li><span class="dot"></span><div><b>Respeto y trato humano</b><div class="sub">Cuidamos la dignidad de cada persona en cada interacción.</div></div></li>
-            <li><span class="dot"></span><div><b>Responsabilidad y aprendizaje</b><div class="sub">Mejora continua y formación permanente.</div></div></li>
-            <li><span class="dot"></span><div><b>Protagonismo</b><div class="sub">Nos hacemos cargo del proceso y del resultado.</div></div></li>
-          </ul>
-        </div>
-
-        <div class="card boxpad">
-          <ul class="values">
-            <li><span class="dot"></span><div><b>Bienestar integral</b><div class="sub">Promovemos ámbitos saludables física, mental y socialmente.</div></div></li>
-            <li><span class="dot"></span><div><b>Compromiso con la comunidad</b><div class="sub">Vínculo responsable y permanente con nuestro entorno.</div></div></li>
-            <li><span class="dot"></span><div><b>Seguridad y calidad</b><div class="sub">Conservación y entrega cuidada de cada producto.</div></div></li>
-          </ul>
-        </div>
+        <ul class="bullets">
+          <li><b>Medicamentos e insumos hospitalarios</b></li>
+          <li><b>Oncológicos</b> • <b>HIV</b> • <b>Esclerosis múltiple</b></li>
+          <li><b>Venta de fórmulas nutricionales</b></li>
+          <li><b>Servicio y provisión de pasteurizadores </b> para fórmulas nutricionales y leche materna</li>
+        </ul>
       </div>
     </section>
 
@@ -502,11 +563,11 @@
         </div>
         <div class="service">
           <h3>Sector privado</h3>
-          <p>Provisión para clínicas, consultorios, laboratorios y empresas de salud.</p>
+          <p>Provisión para clínicas, sanatorios , laboratorios y empresas de salud.</p>
         </div>
         <div class="service">
-          <h3>Licitaciones y hospitales</h3>
-          <p>Acompañamiento en procesos licitatorios y atención a instituciones hospitalarias.</p>
+          <h3>Licitaciones, obras sociales y hospitales</h3>
+          <p>Acompañamiento en procesos licitatorios para obras sociales y atención a instituciones hospitalarias.</p>
         </div>
       </div>
     </section>
@@ -519,17 +580,32 @@
 
       <div class="contactGrid">
         <div class="card boxpad">
+          <div class="contactCardTop">
+            <div>
+              <strong>¿Necesitás comunicarte ya?</strong><br/>
+              <span style="color:var(--muted); font-size:12px;">WhatsApp, llamada o email en 1 click.</span>
+            </div>
+            <div class="contactCTAs">
+              <a class="btn primary" id="callBtn" href="#">Llamar</a>
+              <a class="btn soft" id="mailBtn" href="#">Email</a>
+            </div>
+          </div>
+
           <div class="infoLine">
             <div>📍</div>
             <div><b>Dirección</b><span>Dr. Regiardo 148, Resistencia, Chaco</span></div>
           </div>
           <div class="infoLine">
+            <div>🕒</div>
+            <div><b>Horarios</b><span>Lunes a viernes • 7:30 a 14:30</span></div>
+          </div>
+          <div class="infoLine">
             <div>📞</div>
-            <div><b>Teléfonos</b><span>Tel/Fax: 4415914 • Tel.: (0362) 4450827</span></div>
+            <div><b>Teléfono</b><span>362 424-0734</span></div>
           </div>
           <div class="infoLine">
             <div>✉️</div>
-            <div><b>Email</b><span><a href="mailto:sanantonio@danielalbarran.arnetbiz.com.ar">sanantonio@danielalbarran.arnetbiz.com.ar</a></span></div>
+            <div><b>Email</b><span><a href="mailto:drog.albarran@gmail.com">drog.albarran@gmail.com</a></span></div>
           </div>
 
           <div style="margin-top:12px; border-radius:16px; overflow:hidden; border:1px solid rgba(11,63,120,.12)">
@@ -550,7 +626,7 @@
               </div>
               <div>
                 <label for="tel">Teléfono</label>
-                <input id="tel" name="tel" placeholder="Ej: 0362 4450827" />
+                <input id="tel" name="tel" placeholder="Ej: 362 424-0734" />
               </div>
             </div>
 
@@ -596,23 +672,27 @@
   <div class="container">
     <div class="foot">
       <div>© <span id="year"></span> Droguería San Antonio • Resistencia, Chaco</div>
-      <div>Dr. Regiardo 148 • Tel.: (0362) 4450827</div>
+      <div>Dr. Regiardo 148 • Tel.: 362 424-0734 • <a href="mailto:drog.albarran@gmail.com">drog.albarran@gmail.com</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Año
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // WhatsApp
-  const WHATSAPP_NUMBER = "5493624450827";
+  const PHONE_RAW = "3624240734";
+  const TO_EMAIL = "drog.albarran@gmail.com";
+
+  const telLink = `tel:+54${PHONE_RAW}`;
+  document.getElementById("callBtn").href = telLink;
+  document.getElementById("callTop").href = telLink;
+  document.getElementById("mailBtn").href = `mailto:${TO_EMAIL}`;
+
+  const WHATSAPP_NUMBER = "549" + PHONE_RAW; // +54 9 + número
   const WHATSAPP_TEXT = "Hola, me comunico con Droguería San Antonio. Quisiera hacer una consulta.";
   document.getElementById("waBtn").href =
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT)}`;
 
-  // Formulario -> mailto
-  const TO_EMAIL = "sanantonio@danielalbarran.arnetbiz.com.ar";
   document.getElementById("contactForm").addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -638,10 +718,8 @@ ${mensaje}
       `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
-  // Logo fallback: si no carga la imagen, NO mostrar texto feo; mostrar badge
   const logoImg = document.getElementById("logoImg");
   const logoFallback = document.getElementById("logoFallback");
-
   logoImg.addEventListener("error", () => {
     logoImg.style.display = "none";
     logoFallback.style.display = "inline-flex";
@@ -649,6 +727,8 @@ ${mensaje}
 </script>
 </body>
 </html>
+
+
 
 
 
